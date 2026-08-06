@@ -1,0 +1,36 @@
+<!-- @dsCard group="Colors" viewport="820x760" name="Emphasis levels" subtitle="Critical, Required, Optional, Reference" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:28px;font-family:var(--font-core);background:var(--surface-page);color:var(--text-body)}</style></head><body>
+<div id="root" class="td-doc"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<script type="text/babel">
+const { PriorityTag, Callout, SectionHeading } = window.ServiceNowDocumentsDesignSystem_d7be20;
+const rows = [
+  ["critical","Ignoring this causes data loss, outage, or a compliance breach","Solid tag beside the heading, plus a critical callout. One per page."],
+  ["required","Mandatory step in a procedure","Tag on the step title."],
+  ["optional","Recommended but not mandatory","Tag on the step title."],
+  ["reference","Background, appendix, further reading","Tag on the section heading."],
+];
+const App = () => (
+  <div>
+    <SectionHeading level={2} style={{marginTop:0}}>Four levels of emphasis</SectionHeading>
+    <p style={{maxWidth:680}}>Body copy, callouts, and panels all read as informative. These four levels are what let a scanning reader tell what must be acted on from what is merely available.</p>
+    <div style={{border:'var(--border-width-hairline) solid var(--border-rule)',margin:'var(--space-6) 0 var(--space-8)'}}>
+      {rows.map(([level,meaning,where],i)=>(
+        <div key={level} style={{display:'grid',gridTemplateColumns:'150px 1fr 1fr',gap:'var(--space-5)',alignItems:'start',padding:'var(--space-5) var(--space-6)',borderTop:i?'var(--border-width-hairline) solid var(--border-rule)':'none'}}>
+          <PriorityTag level={level} solid={level==='critical'} />
+          <div style={{fontSize:'var(--size-small)',lineHeight:'var(--leading-tight)'}}>{meaning}</div>
+          <div style={{fontSize:'var(--size-caption)',lineHeight:1.6,color:'var(--text-muted)'}}>{where}</div>
+        </div>
+      ))}
+    </div>
+    <Callout variant="critical">Rotating this key invalidates every active integration session.</Callout>
+    <Callout variant="caution">Changing the matrix affects incidents already open.</Callout>
+    <Callout variant="note">Priority is recalculated whenever impact or urgency changes.</Callout>
+  </div>
+);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>

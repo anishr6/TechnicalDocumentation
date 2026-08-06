@@ -3,6 +3,7 @@ import React from "react";
 const variants = {
   caution: { icon: "\u26A0\uFE0F", background: "var(--surface-caution)", border: "var(--border-caution)", label: "Important" },
   note: { icon: "\u2139\uFE0F", background: "var(--surface-note)", border: "var(--border-card)", label: "Note" },
+  critical: { icon: "\u26D4", background: "var(--surface-critical)", border: "var(--priority-critical)", label: "Critical", accent: true },
 };
 
 export function Callout({ variant = "caution", label, children, style }) {
@@ -12,6 +13,7 @@ export function Callout({ variant = "caution", label, children, style }) {
       style={{
         background: v.background,
         border: "var(--border-width-hairline) solid " + v.border,
+        borderLeft: (v.accent ? "var(--border-width-accent)" : "var(--border-width-hairline)") + " solid " + v.border,
         borderRadius: "var(--radius-md)",
         padding: "var(--doc-pad-panel)",
         margin: "0 0 var(--doc-gap-block)",
@@ -23,7 +25,7 @@ export function Callout({ variant = "caution", label, children, style }) {
       }}
     >
       <span style={{ marginRight: "var(--space-2)" }}>{v.icon}</span>
-      <strong style={{ fontWeight: "var(--weight-bold)", color: "var(--text-strong)" }}>{(label || v.label) + ":"}</strong>{" "}
+      <strong style={{ fontWeight: "var(--weight-bold)", color: v.accent ? "var(--priority-critical)" : "var(--text-strong)", letterSpacing: v.accent ? "var(--tracking-caps)" : undefined, textTransform: v.accent ? "uppercase" : undefined }}>{(label || v.label) + ":"}</strong>{" "}
       {children}
     </div>
   );

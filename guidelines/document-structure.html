@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="820x1180" name="Structure blocks" subtitle="At a Glance, takeaways, figures, transitions" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:28px;font-family:var(--font-core);background:var(--surface-page);color:var(--text-body)}</style></head><body>
+<div id="root" class="td-doc"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<script type="text/babel">
+const { AtAGlance, KeyTakeaway, Figure, ChapterTransition, SectionHeading, ComparisonCards, BeforeAfter, Timeline } = window.ServiceNowDocumentsDesignSystem_d7be20;
+const App = () => (
+  <div>
+    <AtAGlance
+      purpose="Explain how incident priority is derived and who may change it."
+      audience="Service desk agents and incident managers"
+      readingTime="12 minutes"
+      prerequisites={["Access to the Incident module", "Familiarity with your impact and urgency matrix"]}
+      takeaways={["Priority is never set manually.", "Impact and urgency together determine priority.", "Escalation follows the assignment group, not the individual."]}
+      style={{marginBottom:'var(--space-8)'}}
+    />
+    <SectionHeading level={2} style={{marginTop:0}}>Comparing deployment options</SectionHeading>
+    <ComparisonCards items={[
+      {title:"Global deployment", subtitle:"Default", points:["Lowest latency","No configuration required"], footnote:"Not compliant under strict residency", tone:"fail"},
+      {title:"Regional deployment", subtitle:"Opt in", points:["Data stays in region","Requires per-region setup"], footnote:"Compliant", tone:"pass"},
+    ]} />
+    <BeforeAfter
+      before={{title:"Manual triage", points:["Agent sets priority by hand","No audit trail"]}}
+      after={{title:"Derived priority", points:["Impact x urgency matrix","Every change logged"]}}
+    />
+    <Figure number={5} title="Rollout Schedule" caption="Phases advance left to right; each begins only after the previous phase closes.">
+      <Timeline orientation="horizontal" items={[
+        {label:"Q1 2026", title:"Pilot", text:"Two assignment groups."},
+        {label:"Q2 2026", title:"Expansion", text:"All service desk teams."},
+        {label:"Q3 2026", title:"General availability", text:"Manual priority disabled."},
+      ]} />
+    </Figure>
+    <KeyTakeaway items={["Priority is never manually set.","Impact plus urgency determine priority."]} />
+    <ChapterTransition next="Assignment and Escalation" />
+  </div>
+);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>

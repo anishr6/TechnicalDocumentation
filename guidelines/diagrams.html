@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="900x1500" name="Diagram library" subtitle="Timeline, swimlane, lifecycle, decision tree, map, layers" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:28px;font-family:var(--font-core);background:var(--surface-page);color:var(--text-body)}</style></head><body>
+<div id="root" class="td-doc"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Timeline, Swimlane, LifecycleCircle, DecisionTree, RelationshipMap, LayerStack, SectionHeading } = window.ServiceNowDocumentsDesignSystem_d7be20;
+const App = () => (
+  <div>
+    <SectionHeading level={3} style={{marginTop:0}}>Timeline — vertical</SectionHeading>
+    <Timeline items={[
+      {label:"Day 0", title:"Incident raised", text:"Impact and urgency captured at intake."},
+      {label:"Day 0 + 4h", title:"First escalation", text:"Unassigned incidents move to the duty manager."},
+      {label:"Day 1", title:"Review", text:"Priority reassessed against the matrix."},
+    ]} />
+    <SectionHeading level={3}>Swimlane</SectionHeading>
+    <Swimlane lanes={[
+      {name:"Requester", steps:[{title:"Submit incident"}, null, null]},
+      {name:"Service desk", steps:[null, {title:"Triage", text:"Impact and urgency set."}, null]},
+      {name:"Assignment group", steps:[null, null, {title:"Resolve", text:"Fix applied and verified."}]},
+    ]} />
+    <SectionHeading level={3}>Lifecycle</SectionHeading>
+    <LifecycleCircle center="Incident lifecycle" stages={["New","In Progress","On Hold","Resolved","Closed"]} />
+    <SectionHeading level={3}>Decision tree</SectionHeading>
+    <DecisionTree question="Does the regulation mandate in-region processing?" branches={[
+      {answer:"Yes", result:"Disable web search", tone:"fail", text:"Reconfigure affected agents before enabling."},
+      {answer:"No", result:"Proceed with review", tone:"pass", text:"Record the assessment in the change record."},
+    ]} />
+    <SectionHeading level={3}>Relationship map</SectionHeading>
+    <RelationshipMap center="Incident" nodes={[
+      {title:"Configuration item", text:"Affected asset"},
+      {title:"Assignment group", text:"Owns resolution"},
+      {title:"Change request", text:"Optional link"},
+      {title:"Problem", text:"Root cause"},
+    ]} />
+    <SectionHeading level={3}>Architecture layers</SectionHeading>
+    <LayerStack layers={[
+      {name:"Presentation", note:"What agents see", items:["Incident form","Agent workspace","Portal"]},
+      {name:"Integration", items:["REST API","MID Server","Event bus"]},
+      {name:"Data", note:"Tables of record", items:["incident","cmdb_ci","sys_user_group"]},
+    ]} />
+  </div>
+);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>
