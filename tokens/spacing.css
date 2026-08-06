@@ -1,0 +1,19 @@
+:root{
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-7:30px;
+  --space-8:40px;
+  --space-9:56px;
+
+  /* Document rhythm */
+  --doc-pad-card:30px;      /* bordered card inner padding */
+  --doc-pad-panel:22px 26px;/* accent panel inner padding */
+  --doc-gap-block:24px;     /* between stacked blocks */
+  --doc-gap-section:44px;   /* above an h2 section */
+  --doc-measure:1180px;     /* article content width */
+  --doc-list-indent:22px;
+}

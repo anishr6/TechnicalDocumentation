@@ -1,0 +1,69 @@
+:root{
+  /* Base — teal (primary brand accent: headings, borders, links) */
+  --td-teal-900:#0F4F58;
+  --td-teal-800:#165F6B;
+  --td-teal-700:#1D7481;
+  --td-teal-600:#2A8794;
+  --td-teal-100:#D4E8E8;
+  --td-teal-050:#F5FAF8;
+
+  /* Base — blue (informational) */
+  --td-blue-600:#2E7FB8;
+  --td-blue-500:#3F96D7;
+  --td-blue-050:#E5F3FC;
+
+  /* Base — amber (caution) */
+  --td-amber-600:#C4801E;
+  --td-amber-500:#E9A83E;
+  --td-amber-100:#FEF4E8;
+  --td-amber-050:#FEFADE;
+
+  /* Base — green (pass / compliant) */
+  --td-green-700:#3E8E32;
+  --td-green-500:#5CBF4A;
+  --td-green-050:#EAFFE7;
+
+  /* Base — red (fail / non-compliant) */
+  --td-red-700:#A93226;
+  --td-red-500:#D0483A;
+  --td-red-050:#FDECEA;
+
+  /* Base — neutrals */
+  --td-ink-900:#1C1C1C;
+  --td-ink-800:#2B2B2B;
+  --td-ink-600:#54595C;
+  --td-ink-400:#8A9093;
+  --td-ink-200:#DDE1E2;
+  --td-ink-100:#EDF0F0;
+  --td-white:#FFFFFF;
+
+  /* Semantic — text */
+  --text-body:var(--td-ink-800);
+  --text-heading:var(--td-teal-700);
+  --text-strong:var(--td-ink-900);
+  --text-muted:var(--td-ink-600);
+  --text-link:var(--td-teal-700);
+  --text-link-hover:var(--td-teal-900);
+  --text-code:var(--td-red-700);
+
+  /* Semantic — surfaces */
+  --surface-page:var(--td-white);
+  --surface-card:var(--td-white);
+  --surface-note:var(--td-teal-050);
+  --surface-info:var(--td-blue-050);
+  --surface-caution:var(--td-amber-100);
+  --surface-quote:var(--td-amber-050);
+  --surface-pass:var(--td-green-050);
+  --surface-fail:var(--td-red-050);
+  --surface-code:var(--td-ink-100);
+  --surface-subtle:var(--td-teal-050);
+
+  /* Semantic — lines */
+  --border-card:var(--td-teal-700);
+  --border-caution:var(--td-amber-500);
+  --border-rule:var(--td-ink-200);
+  --accent-note:var(--td-teal-700);
+  --accent-info:var(--td-blue-500);
+  --accent-pass:var(--td-green-500);
+  --accent-fail:var(--td-red-500);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Technical Document — Continuation Page" description="Same document format without the title masthead: for second and later pages." -->
+<helmet><script src="./ds-base.js"></script><link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#EBF0F1}a{color:#1D7481;text-decoration:none}a:hover{color:#0F4F58;text-decoration:underline}</style></helmet>
+<article style="font-family:'Mulish',Helvetica,Arial,sans-serif;font-size:18px;line-height:1.78;color:#2B2B2B;max-width:1180px;margin:0 auto;padding:56px 56px 0;background:#EBF0F1">
+<h2 style="font-family:'Mulish',Helvetica,Arial,sans-serif;font-weight:700;font-size:32px;line-height:1.22;letter-spacing:-.015em;color:#0F4F58;margin:0 0 20px">Section heading</h2>
+<p style="margin:0 0 16px">A continuation page opens straight into its first section — no title, no meta trail, no standfirst. Everything else about the format is identical to the opening page.</p>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.DocCard" hint-size="100%,200px">
+<h3 style="font-family:'Mulish',Helvetica,Arial,sans-serif;font-weight:300;font-size:22px;line-height:1.25;color:#1D7481;margin:0 0 12px">First concept</h3>
+<p style="margin:0 0 16px">Explain the behaviour in full sentences. State what the system does, not what the reader should feel about it.</p>
+<h3 style="font-family:'Mulish',Helvetica,Arial,sans-serif;font-weight:300;font-size:22px;line-height:1.25;color:#1D7481;margin:0 0 12px">Second concept</h3>
+<p style="margin:0">Name the condition, then the consequence. Parenthetical examples are fine (e.g., a regional compliance requirement).</p>
+</x-import>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.AccentPanel" variant="{{ panelTone }}" accent="{{ panelAccent }}" background="{{ panelBackground }}" label="Supporting detail:" hint-size="100%,120px">
+<ul style="margin:0;padding-left:22px"><li style="margin:0 0 4px"><strong style="font-weight:700;color:#1C1C1C">First item: </strong>what it does</li><li style="margin:0"><strong style="font-weight:700;color:#1C1C1C">Second item: </strong>what it does</li></ul>
+</x-import>
+<h2 style="font-family:'Mulish',Helvetica,Arial,sans-serif;font-weight:700;font-size:32px;line-height:1.22;letter-spacing:-.015em;color:#0F4F58;margin:44px 0 20px">Next section</h2>
+<p style="margin:0 0 16px">Before enabling or continuing to use this feature, you must:</p>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.StepCard" number="1" title="Numbered action" hint-size="100%,220px">
+<p style="margin:0 0 16px"><strong style="font-weight:700;color:#1C1C1C">Action:</strong> State the single thing the reader must do.</p>
+<p style="margin:0 0 8px"><strong style="font-weight:700;color:#1C1C1C">Key Questions:</strong></p>
+<ul style="margin:0;padding-left:22px"><li style="margin:0 0 4px">Ask the question the reader should put to their own organisation?</li><li style="margin:0">Keep each question to one line?</li></ul>
+</x-import>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.Callout" variant="caution" hint-size="100%,90px">State the risk in one sentence, and what the reader may need to reconfigure as a result.</x-import>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.QuoteBanner" label="Banner Message:" hint-size="100%,140px">"Quote product copy exactly as the reader will see it in the interface, including the bracketed action text at the end. [View affected items]"</x-import>
+<x-import component-from-global-scope="ServiceNowDocumentsDesignSystem_d7be20.DocFooter" wordmark="[brand]" company="[Company]" hint-size="100%,240px"></x-import>
+</article>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;panelTone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;note&quot;,&quot;info&quot;,&quot;pass&quot;,&quot;fail&quot;],&quot;default&quot;:&quot;note&quot;,&quot;tsType&quot;:&quot;\&quot;note\&quot; | \&quot;info\&quot; | \&quot;pass\&quot; | \&quot;fail\&quot;&quot;,&quot;section&quot;:&quot;Detail panels&quot;},&quot;panelAccent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#1D7481&quot;,&quot;#0F4F58&quot;,&quot;#3F96D7&quot;,&quot;#3E8E32&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Detail panels&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const tints = { "#1D7481": "var(--td-teal-050)", "#0F4F58": "var(--td-teal-050)", "#3F96D7": "var(--td-blue-050)", "#3E8E32": "var(--td-green-050)" };
+    const accent = this.props.panelAccent || "";
+    return {
+      panelTone: this.props.panelTone ?? "note",
+      panelAccent: accent || undefined,
+      panelBackground: accent ? tints[accent.toUpperCase()] : undefined,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

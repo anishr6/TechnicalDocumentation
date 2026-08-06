@@ -1,0 +1,26 @@
+:root{
+  --font-core:"Mulish","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --weight-light:300;
+  --weight-regular:400;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  /* Document scale — measured off the source recording */
+  --size-h1:38px;
+  --size-h2:32px;
+  --size-h3:22px;
+  --size-h4:18px;
+  --size-body:18px;
+  --size-small:16px;
+  --size-caption:14px;
+  --size-code:15px;
+
+  --leading-heading:1.25;
+  --leading-body:1.78;   /* 32px on 18px */
+  --leading-tight:1.5;
+
+  --tracking-heading:0;
+  --tracking-caps:0.06em;
+}
