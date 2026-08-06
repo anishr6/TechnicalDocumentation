@@ -5,6 +5,10 @@ capability, state its data-handling implications, list the actions a customer mu
 close with an FAQ. This system encodes that format — type, colour, container vocabulary and
 voice — so any new document can be generated to match.
 
+## License
+
+Licensed under the Apache License, Version 2.0. See `LICENSE` for the full text.
+
 ## Provenance
 
 The format was derived from a single screen recording of a documentation article, supplied by
@@ -16,6 +20,40 @@ files were provided.
 
 Where the capture did not show something, this system leaves it out rather than inventing it
 (see *Known gaps*).
+
+## Usage
+
+Two files matter to a consumer: the stylesheet and the bundle.
+
+```html
+<link rel="stylesheet" href="styles.css">
+<script src="_ds_bundle.js"></script>
+```
+
+`styles.css` is an `@import` manifest — it pulls in every token file and the webfont, so link
+that one file and all 95 custom properties become available. `_ds_bundle.js` exposes the
+components on a single global namespace:
+
+```html
+<script type="text/babel">
+  const { DocCard, AccentPanel, Callout } = window.<Namespace>;
+</script>
+```
+
+The namespace string is recorded in `_ds_manifest.json` (`"namespace"`). React 18 and Babel
+standalone must load before the bundle — see `ui_kits/docs-article/index.html` for a complete,
+working page.
+
+**Starting a document.** Copy `templates/technical-document/` for a document's first page and
+`templates/technical-document-page/` for each page after it. Each folder is self-contained; edit
+the `base` constant at the top of its `ds-base.js` so the relative path reaches this project's
+root, then edit the markup directly.
+
+**Reading the system.** Open any file in `guidelines/` in a browser to see a foundation
+specimen. `ui_kits/docs-article/index.html` renders a complete document.
+
+**Exporting.** Both templates print cleanly to PDF. For Word, save the page as standalone HTML,
+open it in Word, then Save As `.docx` — install Mulish first or Word will substitute the font.
 
 ## Index
 
