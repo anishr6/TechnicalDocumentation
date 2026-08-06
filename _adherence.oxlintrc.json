@@ -36,8 +36,8 @@
         "message": "Raw px value — use a design-system spacing token via var()."
       },
       {
-        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Mulish|IBM Plex Mono))/i]",
-        "message": "Font not provided by the design system. Available: Mulish, IBM Plex Mono."
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Mulish))/i]",
+        "message": "Font not provided by the design system. Available: Mulish."
       },
       {
         "selector": "JSXOpeningElement[name.name='AccentPanel'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|accent|background|label|children|style|key|ref|className|style|children)$/]",
@@ -341,7 +341,6 @@
       "--motion-ease": "other"
     },
     "fontFamilies": [
-      "IBM Plex Mono",
       "Mulish"
     ]
   }

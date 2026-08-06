@@ -221,10 +221,24 @@ format's answer is a bold label.
    was drawn or reconstructed. `DocFooter` ships `wordmark="[brand]"`, `company="[Company]"`, a
    neutral tagline and a render-time copyright year. Substitute your own values at the point of
    use, and add `logo.svg` to `assets/` if a real mark should appear.
-2. **Font substitution.** No font binaries were provided. The specimen is a wide humanist
-   geometric sans (single-storey open-tail *g*, slanted-cut *t*, very round *o*); **Mulish**
-   from Google Fonts is the closest free match at the measured 18px/32px width and is what
-   `tokens/fonts.css` loads. Send the real webfonts and swap the `@import` for `@font-face` rules.
+2. **Font substitution.** No brand font binaries were provided. The specimen is a wide humanist
+   geometric sans (single-storey open-tail *g*, slanted-cut *t*, very round *o*); **Mulish** is
+   the closest free match at the measured 18px/32px width. It is now **served locally** from
+   `assets/fonts/` as two variable fonts (upright and italic, weights 200–900), so no external
+   font requests are made. Replace those two files and the `@font-face` rules in
+   `tokens/fonts.css` if the true brand face becomes available.
+
+   *Page weight:* the two TTFs total roughly 500 KB. Converting them to WOFF2 would cut that by
+   about half — worth doing before serving the system on a public, high-traffic site, and not
+   worth doing for internal documents or PDF output.
+
+   *Monospace:* no mono webfont is bundled. The `InlineCode` chip — used when naming an exact
+   interface string, e.g. "Review the `Tools` section" — renders in whichever monospace face the
+   reader's machine provides (Menlo on macOS, Consolas on Windows). The chip's styling is
+   unchanged, so it still reads as a code label; only the letterforms vary between machines.
+   This keeps the system free of third-party font requests. If a consistent mono is required,
+   add the font files to `assets/fonts/`, declare them in `tokens/fonts.css`, and name the family
+   first in `--font-mono`.
 3. **No site chrome.** The source capture was cropped to the article body, so the header,
    product and version switchers, breadcrumb, left navigation tree, "on this page" rail, search
    and page metadata line are unknown and absent from the UI kit.
