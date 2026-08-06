@@ -17,6 +17,7 @@
           {
             "group": [
               "components/chrome/**",
+              "components/diagrams/**",
               "components/document/**",
               "ui_kits/docs-article/**"
             ],
@@ -48,20 +49,48 @@
         "message": "<AccentPanel> variant must be one of 'note' | 'info' | 'pass' | 'fail'."
       },
       {
+        "selector": "JSXOpeningElement[name.name='AtAGlance'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|purpose|audience|readingTime|prerequisites|takeaways|style|key|ref|className|style|children)$/]",
+        "message": "<AtAGlance> doesn't accept that prop. Declared props: title, purpose, audience, readingTime, prerequisites, takeaways, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BeforeAfterSide'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|points|key|ref|className|style|children)$/]",
+        "message": "<BeforeAfterSide> doesn't accept that prop. Declared props: title, points."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='Callout'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|label|children|style|key|ref|className|style|children)$/]",
         "message": "<Callout> doesn't accept that prop. Declared props: variant, label, children, style."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Callout'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:caution|note)$/]",
-        "message": "<Callout> variant must be one of 'caution' | 'note'."
+        "selector": "JSXOpeningElement[name.name='Callout'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:critical|caution|note)$/]",
+        "message": "<Callout> variant must be one of 'critical' | 'caution' | 'note'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChapterTransition'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|next|children|style|key|ref|className|style|children)$/]",
+        "message": "<ChapterTransition> doesn't accept that prop. Declared props: label, next, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ComparisonItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subtitle|points|footnote|tone|key|ref|className|style|children)$/]",
+        "message": "<ComparisonItem> doesn't accept that prop. Declared props: title, subtitle, points, footnote, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ComparisonItem'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:neutral|note|info|pass|fail)$/]",
+        "message": "<ComparisonItem> tone must be one of 'neutral' | 'note' | 'info' | 'pass' | 'fail'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DecisionBranch'] > JSXAttribute > JSXIdentifier[name!=/^(?:answer|result|text|tone|key|ref|className|style|children)$/]",
+        "message": "<DecisionBranch> doesn't accept that prop. Declared props: answer, result, text, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DecisionBranch'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:neutral|pass|fail|caution)$/]",
+        "message": "<DecisionBranch> tone must be one of 'neutral' | 'pass' | 'fail' | 'caution'."
       },
       {
         "selector": "JSXOpeningElement[name.name='DocCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|children|style|key|ref|className|style|children)$/]",
         "message": "<DocCard> doesn't accept that prop. Declared props: title, children, style."
       },
       {
-        "selector": "JSXOpeningElement[name.name='DocFooter'] > JSXAttribute > JSXIdentifier[name!=/^(?:tagline|links|wordmark|company|disclaimer|key|ref|className|style|children)$/]",
-        "message": "<DocFooter> doesn't accept that prop. Declared props: tagline, links, wordmark, company, disclaimer."
+        "selector": "JSXOpeningElement[name.name='DocFooter'] > JSXAttribute > JSXIdentifier[name!=/^(?:tagline|links|wordmark|company|disclaimer|version|owner|reviewDate|classification|page|pages|key|ref|className|style|children)$/]",
+        "message": "<DocFooter> doesn't accept that prop. Declared props: tagline, links, wordmark, company, disclaimer, version, owner, reviewDate, classification, page, pages."
       },
       {
         "selector": "JSXOpeningElement[name.name='DocHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|meta|standfirst|style|key|ref|className|style|children)$/]",
@@ -76,12 +105,40 @@
         "message": "<FeedbackBar> value must be one of 'yes' | 'no'."
       },
       {
+        "selector": "JSXOpeningElement[name.name='Figure'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|title|caption|source|framed|children|style|key|ref|className|style|children)$/]",
+        "message": "<Figure> doesn't accept that prop. Declared props: number, title, caption, source, framed, children, style."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='InlineCode'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|style|key|ref|className|style|children)$/]",
         "message": "<InlineCode> doesn't accept that prop. Declared props: children, style."
       },
       {
+        "selector": "JSXOpeningElement[name.name='KeyTakeaway'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|glyph|items|children|style|key|ref|className|style|children)$/]",
+        "message": "<KeyTakeaway> doesn't accept that prop. Declared props: label, glyph, items, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LayerStackLayer'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|note|items|accent|key|ref|className|style|children)$/]",
+        "message": "<LayerStackLayer> doesn't accept that prop. Declared props: name, note, items, accent."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LifecycleStage'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|text|key|ref|className|style|children)$/]",
+        "message": "<LifecycleStage> doesn't accept that prop. Declared props: title, text."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PriorityTag'] > JSXAttribute > JSXIdentifier[name!=/^(?:level|label|solid|style|key|ref|className|style|children)$/]",
+        "message": "<PriorityTag> doesn't accept that prop. Declared props: level, label, solid, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PriorityTag'] > JSXAttribute[name.name='level'] > Literal[value!=/^(?:critical|required|optional|reference)$/]",
+        "message": "<PriorityTag> level must be one of 'critical' | 'required' | 'optional' | 'reference'."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='QuoteBanner'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|children|style|key|ref|className|style|children)$/]",
         "message": "<QuoteBanner> doesn't accept that prop. Declared props: label, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RelationshipNode'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|text|key|ref|className|style|children)$/]",
+        "message": "<RelationshipNode> doesn't accept that prop. Declared props: title, text."
       },
       {
         "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute > JSXIdentifier[name!=/^(?:level|id|children|style|key|ref|className|style|children)$/]",
@@ -92,8 +149,16 @@
         "message": "<StepCard> doesn't accept that prop. Declared props: number, title, children, style."
       },
       {
+        "selector": "JSXOpeningElement[name.name='SwimlaneStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|text|accent|key|ref|className|style|children)$/]",
+        "message": "<SwimlaneStep> doesn't accept that prop. Declared props: title, text, accent."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='TermListItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:term|text|key|ref|className|style|children)$/]",
         "message": "<TermListItem> doesn't accept that prop. Declared props: term, text."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimelineItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|title|text|key|ref|className|style|children)$/]",
+        "message": "<TimelineItem> doesn't accept that prop. Declared props: label, title, text."
       }
     ]
   },
@@ -112,7 +177,22 @@
       "AccentPanel": {
         "replaces": []
       },
+      "AtAGlance": {
+        "replaces": []
+      },
+      "BeforeAfterSide": {
+        "replaces": []
+      },
       "Callout": {
+        "replaces": []
+      },
+      "ChapterTransition": {
+        "replaces": []
+      },
+      "ComparisonItem": {
+        "replaces": []
+      },
+      "DecisionBranch": {
         "replaces": []
       },
       "DocCard": {
@@ -130,10 +210,28 @@
       "FeedbackBar": {
         "replaces": []
       },
+      "Figure": {
+        "replaces": []
+      },
       "InlineCode": {
         "replaces": []
       },
+      "KeyTakeaway": {
+        "replaces": []
+      },
+      "LayerStackLayer": {
+        "replaces": []
+      },
+      "LifecycleStage": {
+        "replaces": []
+      },
+      "PriorityTag": {
+        "replaces": []
+      },
       "QuoteBanner": {
+        "replaces": []
+      },
+      "RelationshipNode": {
         "replaces": []
       },
       "SectionHeading": {
@@ -142,7 +240,13 @@
       "StepCard": {
         "replaces": []
       },
+      "SwimlaneStep": {
+        "replaces": []
+      },
       "TermListItem": {
+        "replaces": []
+      },
+      "TimelineItem": {
         "replaces": []
       }
     },
@@ -158,10 +262,12 @@
       "--border-width-hairline",
       "--doc-gap-block",
       "--doc-gap-section",
+      "--doc-gap-transition",
       "--doc-list-indent",
       "--doc-measure",
       "--doc-pad-card",
       "--doc-pad-panel",
+      "--doc-page-fill-min",
       "--font-core",
       "--font-mono",
       "--leading-body",
@@ -170,6 +276,10 @@
       "--motion-base",
       "--motion-ease",
       "--motion-fast",
+      "--priority-critical",
+      "--priority-optional",
+      "--priority-reference",
+      "--priority-required",
       "--radius-md",
       "--radius-none",
       "--radius-pill",
@@ -196,12 +306,16 @@
       "--surface-card",
       "--surface-caution",
       "--surface-code",
+      "--surface-critical",
       "--surface-fail",
       "--surface-info",
       "--surface-note",
+      "--surface-optional",
       "--surface-page",
       "--surface-pass",
       "--surface-quote",
+      "--surface-reference",
+      "--surface-required",
       "--surface-subtle",
       "--td-amber-050",
       "--td-amber-100",
@@ -294,6 +408,14 @@
       "--accent-info": "color",
       "--accent-pass": "color",
       "--accent-fail": "color",
+      "--priority-critical": "color",
+      "--priority-required": "color",
+      "--priority-optional": "color",
+      "--priority-reference": "color",
+      "--surface-critical": "color",
+      "--surface-required": "color",
+      "--surface-optional": "color",
+      "--surface-reference": "color",
       "--font-core": "font",
       "--font-mono": "font",
       "--weight-light": "font",
@@ -328,6 +450,8 @@
       "--doc-gap-section": "spacing",
       "--doc-measure": "spacing",
       "--doc-list-indent": "spacing",
+      "--doc-page-fill-min": "color",
+      "--doc-gap-transition": "spacing",
       "--radius-none": "radius",
       "--radius-sm": "radius",
       "--radius-md": "radius",

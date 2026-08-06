@@ -30,6 +30,11 @@ date: 2026-08-06T03:40:00Z
 
 ## Notes
 
+- **Pending upload (as of 2026-08-06T04:33Z):** `assets/` (including `assets/fonts/`), `tokens/`
+  and `templates/` are behind this project. The repo's `readme.md` and `SECURITY.md` state that
+  fonts are served locally, but its `tokens/fonts.css` still imports from Google Fonts. Upload
+  those three folders to reconcile.
+
 - The committed `LICENSE` is Apache 2.0 (11,357 bytes) — chosen deliberately for its express
   patent grant and patent-retaliation clause, which apply regardless of whether the author
   holds any patents.

@@ -23,15 +23,42 @@ Where the capture did not show something, this system leaves it out rather than 
 
 ## Usage
 
-Two files matter to a consumer: the stylesheet and the bundle.
+Three ways in, easiest first.
+
+### 1. Write a document
+
+You need no tooling and no code.
+
+Copy `templates/technical-document/` for a document's first page, and
+`templates/technical-document-page/` for each page after it. Open the `.dc.html` file inside and
+edit the text directly — headings, paragraphs and list items are ordinary HTML.
+
+Each template folder is self-contained. If you move it somewhere else, open its `ds-base.js` and
+adjust the `base` path at the top so it still reaches this project's root.
+
+Both templates print cleanly to PDF. For Word, save the page as standalone HTML, open it in Word,
+then Save As `.docx`.
+
+### 2. Use it with an AI coding agent
+
+This repository doubles as an agent skill. `SKILL.md` at the root declares it, so an agent that
+supports skills — Claude Code, for instance — can load the whole system and design against it.
+
+Drop the folder into your agent's skills directory and ask for a document. The agent reads this
+readme for the format, voice and layout rules, then builds from the components rather than
+inventing its own styling.
+
+### 3. Build with the components in code
+
+Two files matter: the stylesheet and the bundle.
 
 ```html
 <link rel="stylesheet" href="styles.css">
 <script src="_ds_bundle.js"></script>
 ```
 
-`styles.css` is an `@import` manifest — it pulls in every token file and the webfont, so link
-that one file and all 95 custom properties become available. `_ds_bundle.js` exposes the
+`styles.css` is an `@import` manifest that pulls in every token file and the local webfonts, so
+linking that one file makes all 95 custom properties available. `_ds_bundle.js` exposes the
 components on a single global namespace:
 
 ```html
@@ -40,20 +67,15 @@ components on a single global namespace:
 </script>
 ```
 
-The namespace string is recorded in `_ds_manifest.json` (`"namespace"`). React 18 and Babel
-standalone must load before the bundle — see `ui_kits/docs-article/index.html` for a complete,
-working page.
+The namespace string is recorded in `_ds_manifest.json` under `"namespace"`. React 18 and Babel
+standalone must load before the bundle — `ui_kits/docs-article/index.html` is a complete working
+page to copy from.
 
-**Starting a document.** Copy `templates/technical-document/` for a document's first page and
-`templates/technical-document-page/` for each page after it. Each folder is self-contained; edit
-the `base` constant at the top of its `ds-base.js` so the relative path reaches this project's
-root, then edit the markup directly.
+### Reading the system
 
-**Reading the system.** Open any file in `guidelines/` in a browser to see a foundation
-specimen. `ui_kits/docs-article/index.html` renders a complete document.
-
-**Exporting.** Both templates print cleanly to PDF. For Word, save the page as standalone HTML,
-open it in Word, then Save As `.docx` — install Mulish first or Word will substitute the font.
+Open any file in `guidelines/` in a browser to see a foundation specimen — colour ramps, the type
+scale, spacing rhythm, container anatomy. `ui_kits/docs-article/index.html` renders a full
+document end to end.
 
 ## Index
 
@@ -81,12 +103,22 @@ Document blocks (`components/document/`):
 **DocHeader**, **SectionHeading**, **DocCard**, **StepCard**, **AccentPanel**, **Callout**,
 **QuoteBanner**, **TermList**, **InlineCode**.
 
+Structure blocks (`components/document/`):
+**AtAGlance**, **KeyTakeaway**, **Figure**, **ChapterTransition**, **PriorityTag**,
+**ComparisonCards**, **BeforeAfter**.
+
+Diagrams (`components/diagrams/`):
+**Timeline**, **Swimlane**, **LifecycleCircle**, **DecisionTree**, **RelationshipMap**,
+**LayerStack**.
+
 Article chrome (`components/chrome/`): **FeedbackBar**, **DocFooter**.
 
 Screens (`ui_kits/docs-article/`): **DocsArticle**.
 
-The inventory is exactly the block types the source article used — nothing was added
-speculatively. *Intentional additions:* `SectionHeading` and `TermList` wrap plain `h2/h3` and
+The document blocks are exactly the block types the source article used — nothing was added
+speculatively there. The structure blocks and diagrams came later, from a review of documents
+built on the system: they answer pacing and emphasis problems the source recording never had
+to solve. Each is described in its own `.prompt.md`. *Intentional additions:* `SectionHeading` and `TermList` wrap plain `h2/h3` and
 `ul/li` markup so the light-teal heading rule and the bold-term list pattern can't drift.
 `DocHeader` is the document opening — the capture was cropped and never showed the top of the
 article, so this block is composed from the format's own parts (muted uppercase meta trail,
@@ -95,6 +127,26 @@ light teal h1, 20px standfirst) rather than copied.
 > **Note on the JS namespace.** The compiler derives `window.<Namespace>` from the project
 > title, so existing card and template files reference a namespace string generated before the
 > rename. It is an internal identifier only and appears in no rendered output.
+
+## Document structure rules
+
+These are not optional stylistic preferences; a document that breaks them reads as unfinished.
+
+1. **Open with `AtAGlance`.** Purpose, audience, reading time, prerequisites, key takeaways —
+   before the first section heading. A reader who stops there still knows whether the document
+   applies to them.
+2. **Fill at least 70% of every page** (`--doc-page-fill-min`). A short page takes another
+   block: pull the next section up, or add a note callout, a figure, a takeaway card, or a
+   references list. Only a chapter's last page may end early. See
+   `guidelines/page-rhythm.html`.
+3. **Four levels of emphasis, not one.** Critical, Required, Optional, Reference — via
+   `PriorityTag` and `Callout variant="critical"`. At most one Critical item per page.
+4. **Every visual is a numbered, titled `Figure`.** "Figure 5" alone is not a caption;
+   "Figure 5 | Incident Lifecycle Overview" is. Numbering runs through the whole document.
+5. **Close every chapter with `KeyTakeaway`, then `ChapterTransition`.** Two or three facts
+   the reader must carry forward, then one line naming what comes next.
+6. **Footers carry document metadata**, not just copyright: version, owner, next review date,
+   classification, and page x of y.
 
 ## Which template to start from
 
